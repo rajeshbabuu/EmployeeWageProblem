@@ -2,28 +2,33 @@
 {
     internal class Program
     {
-        static void Main(string[] args)
-        {
-            int Is_Part_Time = 1;
-            int Is_Full_Time = 2;   // Constants
-            int Emp_Rate_Per_Hour = 20;
+        
+        
+          public const  int Is_Part_Time = 1;
+          public const  int Is_Full_Time = 2;   // Constants
+           public const int Emp_Rate_Per_Hour = 100;
 
-            int empHrs = 0;   //Variables
-            int empwage= 0;
-            Random random= new Random();
-            int empCheck = random.Next(0, 2);
-            if (empCheck == Is_Part_Time)
+            static void Main(string[] args)
             {
-                empHrs = 4;
-            }
-            else if (empCheck == Is_Full_Time)
+
+                int empHrs = 0;   //Variables
+                int empwage= 0;
+                Random random= new Random();
+                int empCheck = random.Next(0, 3);
+                switch (empCheck)
             {
-                empHrs = 8;
+                case Is_Part_Time:
+                    empHrs = 4;
+                    break;
+                case Is_Full_Time:
+                    empHrs = 8;
+                    break;
+                default:
+                    empHrs = 0;
+                    break;
+
             }
-            else
-            {
-                empHrs = 0;
-            }
+            
             empwage = empHrs * Emp_Rate_Per_Hour;
             Console.WriteLine("Emp Wage : " + empwage);
 
