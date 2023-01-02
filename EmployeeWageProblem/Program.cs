@@ -8,14 +8,15 @@
           public const  int Is_Full_Time = 2;   // Constants
           public const int Emp_Rate_Per_Hour = 100;
           public const int Num_Of_Working_Days = 20;
+        public const int Max_Hrs_In_Month = 100;
 
             static void Main(string[] args)
             {
 
                 int empHrs = 0;   //Variables
-                int empwage= 0;
-            int totalEmpWage = 0;
-            for (int day = 0; day < Num_Of_Working_Days; day++)
+                int totalEmpHrs = 0;
+                int totalWorkingDays = 0;
+           while (totalEmpHrs <Max_Hrs_In_Month && totalWorkingDays < Num_Of_Working_Days)
             {
 
 
@@ -36,10 +37,11 @@
                 }
 
 
-                empwage = empHrs * Emp_Rate_Per_Hour;
-                totalEmpWage += empCheck;
-                Console.WriteLine("Emp Wage : " + empwage);
+                
+                totalEmpHrs += empCheck;
+                Console.WriteLine("totalWorkingDays "+ "Employee Hrs: " + empHrs);
             }
+            int totalEmpWage = totalEmpHrs * Emp_Rate_Per_Hour;
             Console.WriteLine("Total Employee Wage: " + totalEmpWage);
                 Console.ReadLine();
 
