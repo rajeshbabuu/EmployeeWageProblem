@@ -38,7 +38,9 @@
         }
         static void Main(string[] args)
         {
-            computeEmpWage();
+            computeEmpWage("Mircosoft", 100, 20, 100);
+            computeEmpWage("Google", 200, 30, 150);
+            Console.ReadLine();
 
 
         }
