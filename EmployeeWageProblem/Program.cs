@@ -4,15 +4,25 @@
     {
         public const int IS_PART_TIME = 1;
         public const int IS_FULL_TIME = 2;
-        public const int EMP_RATE_PER_HOUR = 100;
-        public const int NUM_OF_WORKING_DAYS = 20;
-        public const int MAX_HRS_IN_MONTH = 100;
 
-        public static int computeEmpWage()
+        private string companyname;
+        private int empRatePerHour;
+        private int numOfWorkingDays;
+        private int maxHoursPerMonth;
+        private int totalEmpWage;
+
+        public EmpWageBuilderObject(string companyname, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
+        {
+            this.companyname = companyname;
+            this.empRatePerHour = empRatePerHour;
+            this.numOfWorkingDays = numOfWorkingDays;
+            this.maxHoursPerMonth = maxHoursPerMonth;
+        }
+        public void computeEmpWage()
         {
             int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
 
-            while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
+            while (totalEmpHrs <= this.maxHoursPerMonth && totalWorkingDays < this.numOfWorkingDays)
             {
                 totalWorkingDays++;
                 Random random = new Random();
@@ -32,14 +42,21 @@
                 totalEmpHrs += empHrs;
                 Console.WriteLine("Day#:" + totalWorkingDays + "Emp Hrs: " + empHrs);
             }
-            int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
-            Console.WriteLine("Total Emp Wage: " + totalEmpWage);
-            return totalEmpWage;
+            totalEmpWage = totalEmpHrs * this.empRatePerHour;
         }
-        static void Main(string[] args)
+        public string toString()
         {
-            computeEmpWage("Mircosoft", 100, 20, 100);
-            computeEmpWage("Google", 200, 30, 150);
+            return "Total Employee Wage for Company " + this.companyname + " is: " + this.totalEmpWage;
+        }
+    }
+    static void Main(string[] args)
+        {
+            EmpWageBuilderObject Microsoft = new EmpWageBuilderObject("Microsoft", 100, 20, 100);
+            EmpWageBuilderObject Google = new EmpWageBuilderObject("Google", 200, 30, 150);
+            Microsoft.computeEmpWage();
+            Console.WriteLine(Microsoft.toString());
+            Google.computeEmpWage();
+            Console.WriteLine(Google.toString());
             Console.ReadLine();
 
 
